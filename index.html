@@ -1,0 +1,725 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>ITESM</title><base href="https://locochon2000.github.io/TecTourApp/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/x-icon" href="favicon.ico"><link href="styles.ac89bfdd6de82636b768.bundle.css" rel="stylesheet"/></head><body><app-root></app-root><script type="text/javascript" src="inline.318b50c57b4eba3d437b.bundle.js"></script><script type="text/javascript" src="polyfills.bf95165a1d5098766b92.bundle.js"></script><script type="text/javascript" src="main.0d95a1f4d00c4ada4696.bundle.js"></script></body></html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><style>#map{
+              height:100%;
+              width:100%;
+              margin:0%;
+              padding:0%;
+          }</style></head><body><div id="map"></div><script>function initMap(){
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat:22.762656, lng: -102.534642},
+          zoom:20,
+          mapTypeId: 'hybrid',
+        });
+        
+         var infoWindow = new google.maps.InfoWindow({map: map});
+         var marker = new google.maps.Marker({map: map});
+      
+{
+  
+{
+         // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+         
+          navigator.geolocation.watchPosition(function(position) {
+              var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+              enableHighAccuracy: true,
+            };
+            
+     map.setCenter(pos);
+
+              /*var marker = new google.maps.Marker({
+              position: pos,
+              map:map,
+              icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 6.5,
+            strokeColor: '#0000FF',
+            strokeOpacity: 1,
+            strokeWeight: .5,
+            fillColor: '#0000FF',
+            fillOpacity: 1,
+          },
+              timeout: 1000, 
+              maximumAge: 0,
+              enableHighAccuracy: true
+              });*/
+
+            var Ic = {path: google.maps.SymbolPath.CIRCLE,
+            scale: 6.5,
+            strokeColor: '#0000FF',
+            strokeOpacity: 1,
+            strokeWeight: .5,
+            fillColor: '#0000FF',
+            fillOpacity: .7,}  
+            ;
+
+marker.addListener('click', function(){
+              infoWindow.open(map, marker);
+              
+}); 
+           // infoWindow.setPosition(pos);
+            infoWindow.setContent('Usted');
+           // infoWindow.open(map);
+
+
+              marker.setPosition(pos);
+              marker.setIcon(Ic);
+              marker.setTimeout(1000);
+              marker.setMaximuAge(0);
+              marker.enableHighAccuracy(true);
+              
+              
+            map.setCenter(pos);
+            
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+         
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+        
+       
+          }
+  }
+       /*  //Map options
+          var options = {
+              zoom:18,
+              center: {lat:22.762656, lng: -102.534642}
+        }
+
+          //New map
+          var map = new 
+          google.maps.Map (document.getElementById('map'), options); */
+      
+        /*   //Add marker
+          var marker = new google.maps.Marker({
+              position:{lat:position.coords.latitude , lng:position.coords.longitude },
+              map:map
+          });
+  
+         
+          var infoWindow = new google.maps.InfoWindow({
+              content:'<h1>Lynn MA</h1>'
+          });
+  
+          marker.addListener('click', function(){
+              infoWindow.open(map, marker);
+          });
+          */
+ 
+/*
+ // Try HTML5 geolocation.
+ { if (navigator.geolocation) {
+       
+          navigator.geolocation.watchPosition(function(position) {  
+             var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+              timeout: 1000, 
+              maximumAge: 0,
+              enableHighAccuracy: true,
+              
+            }; 
+            map.setCenter(pos);
+
+            
+            var circleOptions = {
+              strokeColor:'#0000FF',
+              strokeOpacity: 1,
+              fillColor: '#0000FF',
+              fillOpacity: .5,
+              center: pos,
+              radius: 3,
+              map:map,
+              enableHighAccuracy: true,
+              timeout: 1000,
+              miximumAge: 0,
+             
+              };
+ var circle = new google.maps.Circle(circleOptions);
+ circle.length=1;
+
+                          
+// circle.setMap(map);
+//circle.setPosition(pos);
+// this.map.clear();
+//window.open('https:www.wix.com');
+                  
+
+        /*  infoWindow.setPosition(pos);
+            infoWindow.setContent('Usted'); {
+            timeout: 1000;
+            maximumAge: 0;
+            enableHighAccuracy: true;} 
+            
+            //circle.reload();
+       
+
+ 
+          }, function() {
+            handleLocationError(true, circle, map.getCenter());
+           
+         return navigator.geolocation;
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, circle, map.getCenter());
+          }
+      }
+
+      function handleLocationError(browserHasGeolocation, circle, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+     infoWindow.open(map);
+     
+      }
+      
+  
+      function scrollMap(position) {
+      // Scrolls the map so that it is centered at (position.coords.latitude, position.coords.longitude).
+
+    }
+
+    // Request repeated updates.
+    var watchId = navigator.geolocation.watchPosition(scrollMap);*/
+
+{
+
+ var citymap = {};
+citymap['Edificio Administrativo'] = {
+  center: new google.maps.LatLng(22.762656, -102.534642),
+  
+};
+citymap['Entrada'] = {
+  center: new google.maps.LatLng(22.762705, -102.534136),
+  
+};
+citymap['Aulas IA'] = {
+  center: new google.maps.LatLng(22.762946,  -102.534598),
+  
+};
+citymap['Aulas IB'] = {
+  center: new google.maps.LatLng(22.763309, -102.534575),
+  
+};
+citymap['Hot Pot/Laboratorio'] = {
+  center: new google.maps.LatLng(22.763254, -102.534707),
+  
+};
+citymap['Salones Prepa'] = {
+  center: new google.maps.LatLng(22.763367, -102.534865),
+  
+};
+citymap['Oficinas Prepa'] = {
+  center: new google.maps.LatLng(22.763386, -102.535417),
+  
+};
+citymap['Robótica'] = {
+  center: new google.maps.LatLng(22.762991, -102.535531),
+  
+};
+citymap['Archivo Histórico'] = {
+  center: new google.maps.LatLng(22.76267, -102.535603),
+  
+};
+citymap['CCI. Centro de Competitividad Internacional'] = {
+  center: new google.maps.LatLng(22.762382, -102.535866),
+  
+};
+citymap['Aulas III. Profesional'] = {
+  center: new google.maps.LatLng(22.762903, -102.536248),
+  
+};
+citymap['CDC. Centro Del Conocimiento'] = {
+  center: new google.maps.LatLng(22.763359, -102.536494),
+  
+};
+citymap['Cafetería'] = {
+  center: new google.maps.LatLng(22.762163, -102.534753),
+  
+};
+citymap['Edificio Cultural'] = {
+  center: new google.maps.LatLng(22.761547, -102.534775),
+  
+};
+citymap['Gimnasio'] = {
+  center: new google.maps.LatLng(22.761591, -102.536108),
+  
+};
+citymap['Cancha de Futbol. Pasto Natural'] = {
+  center: new google.maps.LatLng(22.76121, -102.535288),
+
+};
+citymap['Cancha de Futbol 7. Pasto Sintético'] = {
+  center: new google.maps.LatLng(22.760685, -102.536086),
+ 
+};
+citymap['Cancha de Futbol Rápido'] = {
+  center: new google.maps.LatLng(22.760739, -102.5364537),
+  
+};
+citymap['Cancha de Tenis'] = {
+  center: new google.maps.LatLng(22.761019, -102.535856),
+  
+};
+citymap['Cancha de Básquetbol'] = {
+  center: new google.maps.LatLng(22.761489, -102.535815),
+  
+};
+citymap['Cancha de Básquetbol 2'] = {
+  center: new google.maps.LatLng(22.761611, -102.53626),
+  
+};
+citymap['Cancha de Voleibol'] = {
+  center: new google.maps.LatLng(22.761652, -102.536575),
+  
+};
+citymap['Cancha de Voleibol de Playa'] = {
+  center: new google.maps.LatLng(22.761448, -102.53672),
+  
+};
+citymap['Pista Atlética 400mts'] = {
+  center: new google.maps.LatLng(22.761151, -102.53526),
+  
+};
+citymap['Borrego'] = {
+  center: new google.maps.LatLng(22.762752, -102.536018),
+  
+};
+
+
+var cityCircle;
+var infowindow = new google.maps.InfoWindow();
+
+for (var city in citymap) {
+    // Add the circle for this city to the map.
+    var cityCircle = new google.maps.Circle({
+      strokeColor: '#FF0000',
+      strokeOpacity: 1,
+      strokeWeight: .5,
+      fillColor: '#FF0000',
+      fillOpacity: 0.5,
+      map: map,
+      center: citymap[city].center,
+      radius: 5,
+      clickable: true,
+      title: city,
+      });
+  }
+      
+
+  var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+        
+        //Array of markers
+          var markers = [
+                 
+          {
+              coords:{lat:22.762656, lng: -102.534642},
+              content:'<h1>Edificio Administrativo</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Edificio Administrativo</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/edificio-administrativo">'+
+            'Click aquí para explorar el Edificio Administrativo</a>.<p/> '+
+            '</div>'+
+            '</div>',
+                             
+              },
+              {
+              coords:{lat: 22.762705, lng:-102.534136},
+              content:'<h1>Entrada</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Entrada</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/estacionamientos">'+
+            'Click aquí para explorar la Entrada</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },    
+              {
+              coords:{lat:22.762946, lng: -102.534598},
+              content:'<h1>Aulas IA</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Aulas IA</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/aulas-1a">'+
+            'Click aquí para explorar Aulas IA</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },
+              {
+              coords:{lat:22.763309, lng:-102.534575},
+              content:'<h1>Aulas IB</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Aulas IB</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/aulas-1b">'+
+            'Click aquí para explorar Aulas IB</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.763254, lng:-102.534707},
+              content:'<h1>Hot Pot/Laboratorio</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Hot Pot/Laboratorio</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/ala-este">'+
+            'Click aquí para explorar Hot Pot y el Laboratorio</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },
+              {
+              coords:{lat:22.763367, lng:-102.534865},
+              content:'<h1>Salones Prepa</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Salones de Prepa</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/torre-central">'+
+            'Click aquí para explorar los Salones de Prepa</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },    
+              {
+              coords:{lat:22.763386, lng:-102.535417},
+              content:'<h1>Oficinas Prepa</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Oficinas de Prepa</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/oficinas-de-profesores">'+
+            'Click aquí para explorar las Oficinas de Prepa</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },
+              {
+              coords:{lat: 22.762991, lng:-102.535531},
+              content:'<h1>Robótica</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Robótica</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/actual-salon-de-robotica">'+
+            'Click aquí para explorar el Salón de Robótica</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.76267, lng:-102.535603},
+              content:'<h1>Antiguas Oficinas de Preparatoria</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Archivo Histórico</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/antiguas-oficinas-de-preparatoria">'+
+            'Click aquí para explorar las Antiguas Oficinas de Preparatoria</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },
+              {
+              coords:{lat:22.762382, lng:-102.535866},
+              content:'<h1>CCI. Centro de Competitividad Internacional</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">CCI. Centro de Competitividad Internacional</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cci">'+
+            'Click aquí para explorar el CCI</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },    
+              {
+              coords:{lat:22.762903, lng:-102.536248},
+              content:'<h1>Aulas III. Profesional</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Aulas III. Profesional</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/aulas-iii">'+
+            'Click aquí para explorar Aulas III</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },
+              {
+              coords:{lat:22.763359, lng:-102.536494},
+              content:'<h1>CDC. Centro Del Conocimiento</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">CDC. Centro de Conocimientos</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cdc">'+
+            'Click aquí para explorar el CDC</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.762163, lng:-102.534753},
+              content:'<h1>Cafetería</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cafetería</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cafeteria">'+
+            'Click aquí para explorar la Cafetería</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },
+              {
+              coords:{lat:22.761547, lng:-102.534775},
+              content:'<h1>Antiguo Edificio Difusión Cultural</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Edificio Cultural</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/antiguo-edificio-difusion-cul">'+
+            'Click aquí para explorar el Antiguo Edificio Difusión Cultural</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },    
+              {
+              coords:{lat:22.761591, lng:-102.536108},
+              content:'<h1>Gimnasio</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Gimnasio</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/gimnasio">'+
+            'Click aquí para explorar el Gimnasio</a>.<p/> '+
+            '</div>'+
+            '</div>'
+          
+              },
+              {
+              coords:{lat:22.76121, lng:-102.535288},
+              content:'<h1>Cancha de Futbol. Pasto Natural</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Futbol. Pasto Natural</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-pasto-natural">'+
+            'Click aquí para explorar la Cancha de Futbol. Pasto Natural</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.760685, lng:-102.536086},
+              content:'<h1>Cancha de Futbol 7. Pasto Sintético</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Futbol 7. Pasto Sintético</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-futbol-7">'+
+            'Click aquí para explorar la Cancha de Futbol 7. Pasto Sintético</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat: 22.760739, lng:-102.536453},
+              content:'<h1>Cancha de Futbol Rápido</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Futbol Rápido</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-futbol-rapido">'+
+            'Click aquí para explorar la Cancha de Futbol Rápido</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.761019, lng:-102.535856},
+              content:'<h1>Cancha de Tenis</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Tenis</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-tenis-basqutbol">'+
+            'Click aquí para explorar la Cancha de Tenis</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.761489, lng:-102.535815},
+              content:'<h1>Cancha de Básquetbol</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Básquetbol</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-tenis-basqutbol">'+
+            'Click aquí para explorar la Cancha de Básquetbol</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.761611, lng:-102.53626},
+              content:'<h1>Cancha de Básquetbol</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Básquetbol</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-basquetbol">'+
+            'Click aquí para explorar la Cancha de Básquetbol</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.761652, lng:-102.536575},
+              content:'<h1>Cancha de Voleibol</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Voleibol</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-voleibol">'+
+            'Click aquí para explorar la Cancha de Voleibol</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.761448, lng:-102.53672},
+              content:'<h1>Cancha de Voleibol de Playa</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Cancha de Voleibol de Playa</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-voleibol-de-playa">'+
+            'Click aquí para explorar la Cancha de Voleibol de Playa</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+              {
+              coords:{lat:22.761151, lng:-102.53526},
+              content:'<h1>Pista Atlética 400mts</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Pista Atlética</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/cancha-de-pasto-natural">'+
+            'Click aquí para explorar la Pista Atlética</a>.<p/> '+
+            '</div>'+
+            '</div>'
+
+              },
+              {
+              coords:{lat:22.762752, lng:-102.536018},
+              content:'<h1>Borrego</h1>',
+              contentString:'<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Borrego</h1>'+
+            '<div id="bodyContent">'+
+            '<p> <a href="https://sguajardo0.wixsite.com/proyectonovus2018/explanada-de-borrego-cimarron">'+
+            'Click aquí para explorar el Borrego</a>.<p/> '+
+            '</div>'+
+            '</div>'
+    
+              },
+          ];
+  
+              //Loop through markers
+              for(var i = 0;i < markers.length; i++){
+                  //Add marker
+                  addMarker(markers[i]);
+              }
+  
+  
+          //Add marker function
+          function addMarker(props){
+              var marker = new google.maps.Marker({
+              position:props.coords,
+              map:map,
+              icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 10,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1,
+            strokeWeight: .5,
+            fillColor: '#FF0000',
+            fillOpacity: 0.5,
+          }
+              //iconBase + 'info-i_maps.png',
+              
+          });
+          
+          //Check content
+          if(props.content){
+              var infoWindow = new google.maps.InfoWindow({
+              content:props.contentString,
+              
+          });
+  
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+         
+
+        }
+      }
+
+  }
+  marker.setMap(map);  
+}
+     mMap.setMyLocationEnabled(true);</script><script async defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4NImIwIEWIZnrmhP1s7IFA_FYqhjiMUI&callback=initMap"></script></body></html>
